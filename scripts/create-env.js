@@ -1,8 +1,6 @@
 const fs = require('fs')
 try {
   const envVariables = [
-    'API_URL',
-    'CLOUDINARY_NAME'
   ]
   const envFileString = envVariables.reduce((fileString, envVar) => (
     fileString.concat(`${envVar}=${process.env[envVar]}\n`)

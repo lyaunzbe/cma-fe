@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { } from 'react'
 import Sketch from '../../components/sketch'
 
-import PropTypes from 'prop-types'
-
-const Home = ({  }) => {
+const Home = () => {
   return (
     <>
       <Sketch />

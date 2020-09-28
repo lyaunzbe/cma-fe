@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from 'routes/home'
 
-
 import classNames from 'classnames/bind'
 import style from './App.module.scss'
 const cx = classNames.bind(style)
