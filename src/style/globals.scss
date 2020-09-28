@@ -1,0 +1,24 @@
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 16px,
+  ratio: $major-third
+);
+
+/* Typography */
+$heading-font-stack: 'monotype-grotesque-condensed', sans-serif;
+$body-font-stack: 'monotype-grotesque-regular', sans-serif;
+
+
+/* Colors */
+$white: #fff;
+$black: #000;
+$omnivore-blue: #00f;
+$bg-pink: #f5dcf5;
+$nav-gradient: linear-gradient(to right, rgba(222, 255, 217, 1) 0%, rgba(201, 255, 255, 1) 45.09%, rgba(218, 227, 177, 0.35) 92%, rgba(255, 255, 255, 0) 100%);
+
+/* Sizes */
+$active-navbar-width: 22rem;
+$navbar-width: 6.5rem;
+
+@import url('https://use.typekit.net/ceh3ajh.css');
