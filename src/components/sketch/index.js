@@ -11,13 +11,14 @@ export default (props) => {
   }
 
   const draw = (p5) => {
-    p5.randomSeed(20)
+    p5.randomSeed(50)
     p5.noiseSeed(100)
     p5.random(pallete)
     p5.drawingContext.shadowColor = p5.color(p5.random(pallete))
     p5.drawingContext.shadowBlur = 100
-    p5.drawingContext.shadowOffsetY = 10
-    p5.drawingContext.shadowOffsetX = 100
+    p5.drawingContext.shadowOffsetY = 100
+    p5.drawingContext.shadowOffsetX = 1
+
     for (let y = -p5.height / 2; y < p5.height; y += p5.height / 15) {
       let c1 = p5.random(pallete)
       let c2 = p5.random(pallete)
@@ -39,11 +40,11 @@ export default (props) => {
       p5.stroke('rgba(50%,70%,100%,0.2)')
       p5.beginShape()
       for (let x = -200; x <= p5.width + 200; x += 3) {
-        const yy = y + p5.map(p5.noise(100 + y, x / 400, p5.frameCount / 300), 0, 1, p5.height / sep, -p5.height / sep)
-        p5.vertex(x, yy)
+        const yy = y + p5.map(p5.noise(100 + y, x / 200, p5.frameCount / 10), 1, 2, p5.height / sep, -p5.height / sep)
+        p5.vertex(yy, x)
       }
-      p5.vertex(p5.width + 200, p5.height)
-      p5.vertex(0 - 200, p5.height)
+      p5.vertex( p5.height, p5.width + 200)
+      p5.vertex(p5.height, 0 - 200)
       p5.endShape()
     }
   }
