@@ -60,8 +60,8 @@ const Home = () => {
     return web3
   }
 
-  const fetchMeta = async (uri, tokenId) => {
-    const response = await fetch(`/api/works/${tokenId}`)
+  const fetchMeta = async (uri) => {
+    const response = await fetch(uri)
     const data = await response.json()
     return data
   }
@@ -75,7 +75,7 @@ const Home = () => {
       for (let index = 0; index < totalSupply; index++) {
         const owner = await contract.methods.ownerOf(index).call()
         const tokenURI = await contract.methods.tokenURI(index).call()
-        const tokenMetadata = await fetchMeta(tokenURI, index)
+        const tokenMetadata = await fetchMeta(tokenURI)
 
         const artwork = {
           tokenId: index,
