@@ -75,7 +75,7 @@ const Home = () => {
       for (let index = 0; index < totalSupply; index++) {
         const owner = await contract.methods.ownerOf(index).call()
         const tokenURI = await contract.methods.tokenURI(index).call()
-        const tokenMetadata = await fetchMeta(tokenURI, tokenId)
+        const tokenMetadata = await fetchMeta(tokenURI, index)
 
         const artwork = {
           tokenId: index,
