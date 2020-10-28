@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import SketchP5 from 'react-p5'
 
 const pallete = ['#f94144', '#f3722c', '#f8961e', '#f9844a', '#f9c74f', '#90be6d', '#43aa8b', '#4d908e', '#577590', '#277da1']
 const sep = 5
 
-export default (props) => {
+const WaveyWave = (props) => {
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(800, 800).parent(canvasParentRef)
     p5.colorMode(p5.HSB, 255, 100, 100, 100)
@@ -51,3 +52,8 @@ export default (props) => {
 
   return <SketchP5 data- setup={setup} draw={draw} />
 }
+
+WaveyWave.propTypes = {
+  seed: PropTypes.number
+}
+export default WaveyWave

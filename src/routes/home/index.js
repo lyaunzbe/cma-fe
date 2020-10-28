@@ -30,8 +30,8 @@ const Home = () => {
   const [museumActive, setMuseumActive] = useState(true)
   const [myCollectionActive, setMyCollectionActive] = useState(false)
 
-  const [museum, setMuseum] = useState([])
-  const [myCollection, setMyCollection] = useState([])
+  const [museum] = useState([])
+  const [myCollection] = useState([])
 
   const web3Modal = new Web3Modal({
     cacheProvider: true, // optional
