@@ -1,9 +1,9 @@
 {
-  "name": "",
+  "name": "cma-fe",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://lyaunzbe.github.io/cma-fe",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
