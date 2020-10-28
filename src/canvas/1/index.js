@@ -11,8 +11,8 @@ export default (props) => {
   }
 
   const draw = (p5) => {
-    p5.randomSeed(50)
-    p5.noiseSeed(100)
+    p5.randomSeed(props.seed)
+    p5.noiseSeed(props.seed * (Math.random() * 100))
     p5.random(pallete)
     p5.drawingContext.shadowColor = p5.color(p5.random(pallete))
     p5.drawingContext.shadowBlur = 100
@@ -43,11 +43,11 @@ export default (props) => {
         const yy = y + p5.map(p5.noise(100 + y, x / 200, p5.frameCount / 10), 1, 2, p5.height / sep, -p5.height / sep)
         p5.vertex(yy, x)
       }
-      p5.vertex( p5.height, p5.width + 200)
+      p5.vertex(p5.height, p5.width + 200)
       p5.vertex(p5.height, 0 - 200)
       p5.endShape()
     }
   }
 
-  return <SketchP5 setup={setup} draw={draw} />
+  return <SketchP5 data- setup={setup} draw={draw} />
 }

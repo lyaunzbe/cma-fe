@@ -1,0 +1,232 @@
+@import '../../style/globals.scss';
+
+.symbolized {
+  font-family: 'Good Glyphs';
+}
+
+.homeWrapper {
+  width: 90%;
+
+  margin: 0 auto;
+}
+
+.content-connect-wallet {
+  width: 20%;
+
+  text-align: center;
+}
+
+.sorry {
+  &__museum,
+  &__my-collection {
+    font-size: ms(2);
+
+    div {
+      padding-top: ms(2);
+
+      font-size: ms(10);
+      text-align: center;
+    }
+  }
+}
+
+.signoff {
+  padding-top: ms(5);
+
+  a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.home {
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+  padding: ms(3) ms(4);
+  overflow-y: scroll;
+
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-weight: 400;
+
+  &__logoName {
+    display: flex;
+
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: ms(2) ms(2);
+    margin-bottom: ms(4);
+
+    color: #ffe863;
+
+    background-color: black;
+    border-radius: 10px;
+
+    //-40
+  }
+
+  &__museum,
+  &__my-collection {
+    width: ms(15);
+    margin: 0 ms(2);
+
+    font-size: ms(2);
+    text-align: center;
+  }
+
+  &__infographic {
+    display: flex;
+
+    flex-direction: row;
+
+    margin-bottom: ms(5);
+  }
+
+  &__info {
+    max-width: 55%;
+    padding: ms(3) ms(5);
+
+    font-size: ms(1);
+    font-weight: 500;
+    line-height: ms(4);
+
+    border: 3px solid black;
+    border-radius: ms(0);
+  }
+
+  &__content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: ms(15);
+
+    border: 3px solid black;
+    border-radius: ms(0);
+  }
+
+  &__computer-artist {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    font-family: 'Good Glyphs';
+    font-size: ms(15);
+    text-align: center;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  &__connect-wallet,
+  &__address {
+    align-self: flex-end;
+
+    margin-bottom: ms(2);
+
+    font-size: ms(0);
+  }
+
+  &__address {
+    color: black;
+    text-decoration: none;
+  }
+
+  &__btn {
+    padding: ms(-1) ms(1);
+
+    cursor: pointer;
+
+    border: 1px solid;
+    border-radius: ms(2);
+
+    &--active {
+      color: #ffe863;
+
+      background-color: black;
+      border-color: black;
+    }
+  }
+
+  &__btn:hover {
+    color: #ffe863;
+
+    background-color: black;
+    border-color: black;
+  }
+
+  &__menu {
+    display: flex;
+
+    justify-content: space-around;
+
+    margin-bottom: ms(5);
+  }
+}
+
+.menu-divider {
+  font-size: ms(4);
+}
+
+.logo {
+  padding: 0.75rem 1rem 2rem;
+  margin-right: ms(4);
+
+  font-family: 'Good Glyphs';
+  font-size: ms(9);
+  letter-spacing: -30px;
+}
+
+.logo-divider {
+  width: 30%;
+  height: ms(1);
+
+  background-color: #ffe863;
+  border: none;
+}
+
+.home-divider {
+
+  position: relative;
+
+  width: 100%;
+  height: ms(-8);
+  margin-bottom: ms(5);
+
+  background-color: black;
+  border: none;
+}
+
+.name {
+  padding-right: ms(0);
+  margin-left: ms(2);
+
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.emphasized {
+  padding-right: ms(-5);
+
+  font-size: ms(5);
+}
+
+@font-face {
+  font-family: 'Good Glyphs';
+  src: url('../../style/GoodGlyphs-No1.ttf') format('truetype');
+}

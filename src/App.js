@@ -3,6 +3,7 @@ import React, { } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from 'routes/home'
+import Work from 'routes/work'
 
 import classNames from 'classnames/bind'
 import style from './App.module.scss'
@@ -14,9 +15,13 @@ const App = () => {
       <Router>
         <div className={cx('app__content')}>
           <Switch>
+            <Route path='/work'>
+              <Work />
+            </Route>
             <Route path='/'>
               <Home />
             </Route>
+
           </Switch>
         </div>
       </Router>
