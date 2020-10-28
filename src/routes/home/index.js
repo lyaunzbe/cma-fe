@@ -61,7 +61,7 @@ const Home = () => {
   }
 
   const fetchMeta = async (uri) => {
-    const response = await fetch(uri)
+    const response = await fetch(uri.replace('http', 'https'))
     const data = await response.json()
     return data
   }
