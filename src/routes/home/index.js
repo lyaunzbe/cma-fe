@@ -10,6 +10,9 @@ import 'dotenv/config'
 
 import CONTRACT_ABI from '../../utils/cma_abi.json'
 
+// hardcoding for now because having env netlify issues
+const CONTRACT_ADDRESS = '0x66A4e600A765b07872A08EDe5Ba0Baa8Bc34875A'
+
 const cx = classNames.bind(style)
 
 function ellipseAddress (address, width) {
@@ -96,7 +99,7 @@ const Home = () => {
     const web3 = initWeb3Provider(provider)
     const accounts = await web3.eth.getAccounts()
     const selectedAccount = accounts[0]
-    const newContract = new web3.eth.Contract(CONTRACT_ABI, process.env.CONTRACT_ADDRESS)
+    const newContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     setAddress(selectedAccount)
     setContract(newContract)
     setConnected(true)
