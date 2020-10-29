@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import style from './style.scss'
+import Loader from 'react-loader-spinner'
 import Web3Modal from 'web3modal'
 import fetch from 'node-fetch'
 import classNames from 'classnames/bind'
@@ -10,10 +10,11 @@ import 'dotenv/config'
 
 import CONTRACT_ABI from '../../utils/cma_abi.json'
 
+import style from './style.scss'
+const cx = classNames.bind(style)
+
 // hardcoding for now because having env netlify issues
 const CONTRACT_ADDRESS = '0x66A4e600A765b07872A08EDe5Ba0Baa8Bc34875A'
-
-const cx = classNames.bind(style)
 
 function ellipseAddress (address, width) {
   return `${address.slice(0, width)}...${address.slice(-width)}`
@@ -38,6 +39,8 @@ const Home = () => {
   const [museum, setMuseum] = useState([])
   const [myCollection, setMyCollection] = useState([])
 
+  const [loading, setLoading] = useState(false)
+
   const web3Modal = new Web3Modal({
     cacheProvider: true, // optional
     theme: 'dark',
@@ -61,6 +64,7 @@ const Home = () => {
   }
 
   const fetchMeta = async (uri) => {
+    // todo remove this hackfix once https metadata uri contract is deployed
     const response = await fetch(uri.replace('http', 'https'))
     const data = await response.json()
     return data
@@ -92,6 +96,7 @@ const Home = () => {
     }
     setMuseum(museum)
     setMyCollection(myCollection)
+    setLoading(false)
   }
 
   const onConnect = async () => {
@@ -110,10 +115,10 @@ const Home = () => {
       <div className={cx('artwork-grid')}>
         {items.map((item, index) => {
           const metadata = item.tokenMetadata
-          const detailURI = type === 'museum' ? `https://ropsten.etherscan.io/token/0x66A4e600A765b07872A08EDe5Ba0Baa8Bc34875A?a=${item.tokenId}` : ''
+          const detailURI = type === 'museum' ? `https://ropsten.etherscan.io/token/${CONTRACT_ADDRESS}?a=${item.tokenId}` : ''
           console.log(detailURI)
           return (
-            <a key={index} className={cx('artwork-grid__item')} href={detailURI}>
+            <a key={index} className={cx('artwork-grid__item')} target='_' href={detailURI}>
               <img className={cx('artwork-grid__preview-media')} src={metadata.gif} />
               <span className={cx('artwork-grid__title')}><u>Title</u>: {metadata.name}</span>
               <span className={cx('artwork-grid__owner')}><u>Owner</u>: {ellipseAddress(item.owner, 10)}</span>
@@ -130,6 +135,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchMuseumAndCollection = async () => {
+      setLoading(true)
       await fetchData()
     }
     fetchMuseumAndCollection()
@@ -184,17 +190,30 @@ const Home = () => {
         </div>
         <div />
         <div className={cx('home__content')}>
+          {(loading && connected) && (
+            <div className={cx('content-loader')}>
+              <Loader
+                type='TailSpin'
+                color='#000000'
+                height={100}
+                width={100}
+              />
+            </div>
+          )}
           {!connected && (
-            <div className={cx('content-connect-wallet', 'home__btn')} onClick={onConnect}>
-              CONNECT WALLET
-            </div>)}
-          {(!museum.length && museumActive && connected) && (
+            <div className={cx('content-wallet-wrapper')}>
+              <div className={cx('content-connect-wallet', 'home__btn')} onClick={onConnect}>
+                CONNECT WALLET
+              </div>
+            </div>
+          )}
+          {(!museum.length && museumActive && connected && !loading) && (
             <div className={cx('sorry__museum')}>
               Sorry, the museum is closed :( Come back soon!
               <div className={cx('symbolized')}>E</div>
             </div>
           )}
-          {(!myCollection.length && myCollectionActive && connected) && (
+          {(!myCollection.length && myCollectionActive && connected && !loading) && (
             <div className={cx('sorry__my-collection')}>
               You do not currently own any CMA NFTs...
               <div className={cx('symbolized')}>e</div>

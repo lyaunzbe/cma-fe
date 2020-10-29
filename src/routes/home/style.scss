@@ -10,6 +10,15 @@
   margin: 0 auto;
 }
 
+.content-loader {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
 .content-connect-wallet {
   width: 20%;
 
@@ -24,8 +33,13 @@
 
   &__museum,
   &__my-collection {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
     width: 100%;
-    padding: ms(5) 0;
 
     font-size: ms(2);
     text-align: center;
@@ -115,11 +129,7 @@
   &__content {
     display: flex;
 
-    // align-items: center;
-
-    // justify-content: center;
-
-    // height: ms(15);
+    min-height: 27rem;
 
     border: 3px solid black;
     border-radius: ms(0);
@@ -235,6 +245,14 @@
   font-size: ms(5);
 }
 
+.content-wallet-wrapper {
+  display: flex;
+
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
 .artwork-grid {
   display: flex;
 
@@ -279,6 +297,7 @@
     align-self: center;
 
     width: ms(12);
+    height: ms(13);
     padding-bottom: ms(2);
   }
 }
